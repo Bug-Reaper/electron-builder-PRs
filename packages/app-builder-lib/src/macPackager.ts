@@ -505,7 +505,7 @@ export class MacPackager extends PlatformPackager<MacConfiguration | MasConfigur
       throw new InvalidConfigurationError("macOS High Sierra 10.13.6 is required to sign")
     }
 
-    const signOptions = await this.helper.buildSignOptions(appPath, identity, signOpts, keychainFile, arch, targetPlatform)
+    const signOptions = await this.helper.buildSignOptions(appPath, identity, signOpts, keychainFile, arch, targetPlatform, hasCustomSign)
     await this.doSign(signOptions, config, identity)
 
     // now that everything is signed, flag binaries that still carry a foreign (or missing) signature and would
